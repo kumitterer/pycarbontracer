@@ -1,30 +1,34 @@
-# KeyDelivery API Python Client
+# CarbonTracer API Python Client
 
-This is a Python client for the KeyDelivery API. It is a wrapper around the [KeyDelivery](https://kd100.com/) API, which allows you to track your shipments.
-
-It is not fully featured yet, but it is a good starting point.
+This is a Python client for CarbonTracer. It is a wrapper around the [CarbonTracer](https://carbontracer.uni-graz.at/) REST API, which allows you to calculate CO2 equivalents for personal transport.
 
 ## Installation
 
 ```bash
-pip install git+https://kumig.it/kumitterer/pykeydelivery
+pip install git+https://kumig.it/kumitterer/pycarbontracer.git
 ```
 
 ## Usage
 
 ```python
-from keydelivery import KeyDelivery
+from pycarbontracer import CarbonTracer
 
-api = KeyDelivery("YOUR_API_KEY", "YOUR_API_SECRET")
+# Create a new CarbonTracer instance
 
-# Find carrier by shipment number
+ct = CarbonTracer("YOUR_API_KEY")
 
-carrier_options = api.detect_carrier("YOUR_SHIPMENT_NUMBER")
+# Or use CarbonTracer.from_config() if you have a config.ini in the format of config.dist.ini
 
-# Realtime tracking
+# Calculate the CO2 equivalents for a train trip from Graz to Vienna
 
-tracking = api.realtime("CARRIER_CODE", "YOUR_SHIPMENT_NUMBER")
+result = ct.routing("train", "8010 Graz", "1010 Wien")
+
+# Print the result
+
+print(f"CO2 equivalents: {result["response"]["data"]["co2eq"]} {result["response"]["data"]["unitco2eq"]}")
 ```
+
+The `CarbonTracer` class also has methods for the `location`, `address` and `co2only` endpoints, as documented in the [CarbonTracer API documentation](https://carbontracer.uni-graz.at/api-doc). The documentation also includes information about the input and output parameters, so make sure to check it out.
 
 ## License
 
