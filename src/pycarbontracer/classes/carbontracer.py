@@ -47,7 +47,7 @@ class CarbonTracer:
 
         return request.execute()
 
-    def address(self, postalCode: str, city: str, street: str):
+    def address(self, postalCode: str, city: str, street: str) -> dict:
         """Request an (Austrian) address from a postal code, city and street.
 
         Args:
@@ -63,7 +63,7 @@ class CarbonTracer:
 
         return request.execute()
 
-    def routing(self, type: str, start: str, dest: str, waypoints: bool = False, bbox: bool = False, airports: bool = False):
+    def routing(self, type: str, start: str, dest: str, waypoints: bool = False, bbox: bool = False, airports: bool = False) -> dict:
         """Make a routing request.
 
         Args:
@@ -98,7 +98,7 @@ class CarbonTracer:
 
         return request.execute()
 
-    def co2only(self, type: str, distance_km: int):
+    def co2only(self, type: str, distance_km: int) -> dict:
         """Only calculate the CO2 emissions for a given distance for a given transport type.
 
         Args:
