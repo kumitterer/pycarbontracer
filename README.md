@@ -5,7 +5,7 @@ This is a Python client for CarbonTracer. It is a wrapper around the [CarbonTrac
 ## Installation
 
 ```bash
-pip install git+https://kumig.it/kumitterer/pycarbontracer.git
+pip install pycarbontracer
 ```
 
 ## Usage
